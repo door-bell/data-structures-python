@@ -82,7 +82,9 @@ class LinkedList:
 
 	def deleteFirst(self, value):
 		index = self.getIndexOf(value)
-		self.delete(index)
+		if index is not -1:
+			self.delete(index)
+		return index
 
 	def contains(self, value):
 		current = self.head

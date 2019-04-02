@@ -24,6 +24,11 @@ class TestInsertion(unittest.TestCase):
         self.assertTrue(ll.contains(1))
         self.assertEqual(ll.getIndexOf(1), 0)
 
+        # Test inserting in the middle
+        ll.insert(3, 1)
+        self.assertEqual(ll.get(1), 3)
+        self.assertTrue(ll.contains(3))
+        self.assertEqual(ll.getIndexOf(3), 1)
 
 if __name__ == '__main__':
     unittest.main()

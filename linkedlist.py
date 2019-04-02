@@ -61,6 +61,8 @@ class LinkedList:
 	def get(self, index=0):
 		if index is 0:
 			return self.head.val
+		if index is -1:
+			index = self.size - 1
 		elif index >= self.size:
 			raise IndexError(f'Index out of bounds: {index}')
 		counter = 0

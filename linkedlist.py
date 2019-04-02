@@ -107,25 +107,3 @@ class LinkedList:
 			current = current.next
 		result += f'{current.val}]'
 		return result
-
-
-if __name__ == '__main__':
-	linkedlist = LinkedList()
-	
-	linkedlist.insert(0, 0)
-	linkedlist.insert(1)
-	linkedlist.insert(2)
-	linkedlist.insert(3)
-	linkedlist.insert(4, 3)
-	linkedlist.insert(5, -1)
-	print(linkedlist)
-	
-	linkedlist.delete(0)
-	linkedlist.delete(2)
-	linkedlist.delete(-1)
-	print(linkedlist)
-
-	print(linkedlist.getIndexOf(2))
-
-	linkedlist.deleteFirst(2)
-	print(linkedlist)

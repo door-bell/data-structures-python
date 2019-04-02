@@ -37,13 +37,13 @@ class LinkedList:
 		self.size += 1
 
 	def delete(self, index=0):
-		if index is -1:
-			index = self.size - 1
 		if index is 0:
 			result = self.head.val
 			self.head = self.head.next
 			self.size -= 1
 			return result
+		if index is -1:
+			index = self.size - 1
 		elif index > self.size - 1 or index < 0:
 			raise IndexError(f'Index out of bounds: {index}')
 

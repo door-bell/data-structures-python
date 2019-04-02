@@ -6,7 +6,7 @@ class LinkedList:
 
 	def __init__(self):
 		self.head = None
-		self.size = 0
+		self._size = 0
 
 	def insert(self, value, index=-1):
 		if self.head is None:
@@ -34,17 +34,17 @@ class LinkedList:
 				current.next = LinkedList.Node(value)
 				current.next.next = temp
 
-		self.size += 1
+		self._size += 1
 
 	def delete(self, index=0):
 		if index is 0:
 			result = self.head.val
 			self.head = self.head.next
-			self.size -= 1
+			self._size -= 1
 			return result
 		if index is -1:
-			index = self.size - 1
-		elif index > self.size - 1 or index < 0:
+			index = self._size - 1
+		elif index > self._size - 1 or index < 0:
 			raise IndexError(f'Index out of bounds: {index}')
 
 		counter = 0
@@ -55,15 +55,15 @@ class LinkedList:
 		result = current.next.val
 		current.next = current.next.next
 
-		self.size -= 1
+		self._size -= 1
 		return result
 
 	def get(self, index=0):
 		if index is 0:
 			return self.head.val
 		if index is -1:
-			index = self.size - 1
-		elif index >= self.size:
+			index = self._size - 1
+		elif index >= self._size:
 			raise IndexError(f'Index out of bounds: {index}')
 		counter = 0
 		current = self.head
@@ -94,10 +94,13 @@ class LinkedList:
 			current = current.next
 		return False
 
+	def size(self):
+		return self._size
+
 	def __str__(self):
-		if self.size is 0:
+		if self._size is 0:
 			return '[]'
-		elif self.size is 1:
+		elif self._size is 1:
 			return f'[{self.head.val}]'
 
 		result = str('[')

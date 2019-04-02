@@ -70,7 +70,7 @@ class TestDeletion(unittest.TestCase):
         # [2, 5] 
 
         # Make sure we have the same list as we think we do
-        self.assertEqual(ll.size, 2)
+        self.assertEqual(ll.size(), 2)
         self.assertTrue(ll.get(0), 2)
         self.assertTrue(ll.get(1), 5)
 

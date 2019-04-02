@@ -20,7 +20,7 @@ class TestInsertion(unittest.TestCase):
         tree.insert(6)
         # Right subtree
         tree.insert(15)
-        tree.insert(14)
+        tree.insert(16)
         tree.insert(13)
 
         # Test deltion of node with 2 children
@@ -29,7 +29,7 @@ class TestInsertion(unittest.TestCase):
         self.assertTrue(tree.contains(5))
         self.assertTrue(tree.contains(4))
         self.assertTrue(tree.contains(6))
-        self.assertTrue(tree.contains(14))
+        self.assertTrue(tree.contains(16))
         self.assertTrue(tree.contains(13))
 
 

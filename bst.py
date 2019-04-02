@@ -31,6 +31,12 @@ class BST:
             self._insert(self._root, value)
         self._size += 1
 
+    def _delete(self, node, value):
+        pass
+
+    def delete(self, value):
+        self._delete(self._root, value)
+
     def _contains(self, node, value):
         if node is None: # Reached bottom of tree
             return False

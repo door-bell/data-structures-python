@@ -10,6 +10,8 @@ class TestInsertion(unittest.TestCase):
         tree.insert(2)
         self.assertTrue(tree.contains(1))
         self.assertTrue(tree.contains(2))
+
+class TestDeletion(unittest.TestCase):
     def test_deletion(self):
         tree = BST()
         # Root
@@ -32,6 +34,13 @@ class TestInsertion(unittest.TestCase):
         self.assertTrue(tree.contains(16))
         self.assertTrue(tree.contains(13))
 
+        # Test deletion of node with no children
+        tree.delete(4)
+        self.assertFalse(tree.contains(4))
+        self.assertTrue(tree.contains(5))
+        self.assertTrue(tree.contains(6))
+        self.assertTrue(tree.contains(16))
+        self.assertTrue(tree.contains(13))
 
 if __name__ == '__main__':
     unittest.main()

@@ -61,11 +61,13 @@ class BST:
                 return node
             # Handles leafs and one subtree
             if node.left is None:
+                temp = node
                 node = node.right
-                return node
+                return temp
             elif node.right is None:
+                temp = node
                 node = node.left
-                return node
+                return temp
             else: # Has a left and right subtree
                 min_node = self._minval(node.right)
                 temp = node

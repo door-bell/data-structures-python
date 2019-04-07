@@ -74,11 +74,11 @@ class BST:
                 return node.count
             else: # Has a left and right subtree
                 min_node = self._minval(node.right)
-                temp = node
+                result = node.count
                 node.val = min_node.val
                 node.count = min_node.count
                 self._delete(node.right, node, min_node.val, all=True)
-                return temp.count
+                return result
 
     def delete(self, value, all=False):
         result = self._delete(self._root, None, value, all=all)

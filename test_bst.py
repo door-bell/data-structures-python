@@ -112,6 +112,7 @@ class BSTTestSize(unittest.TestCase):
         # Insert item that is already in the tree
         tree.insert(10)
         tree.delete(10)
+        self.assertTrue(tree.contains(10))
         self.assertEqual(len(tree), 9)
     def test_bst_size_all_of_multiple(self):
         tree = genTestTree()
@@ -122,6 +123,12 @@ class BSTTestSize(unittest.TestCase):
         # Delete item with count = 1
         tree.delete(10, all=True)
         self.assertEqual(len(tree), 8)
+    def test_bst_size_delete_nonexistent_node(self):
+        tree = genTestTree()
+        self.assertEqual(len(tree), 9)
+        # Delete nonexistent node
+        tree.delete(1000)
+        self.assertEqual(len(tree), 9)
 
 if __name__ == '__main__':
     unittest.main()

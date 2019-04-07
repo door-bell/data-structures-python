@@ -10,16 +10,7 @@ class BST:
         self._root = None
         self._size = 0
 
-    def _minval(self, node):
-        while node.left is not None:
-            node = node.left
-        return node
-
-    def minval(self, node):
-        if self._root is not None:
-            return (_minval(self._root)).val
-        return None
-    
+   
     def _insert(self, node, value):
         if value < node.val:
             if node.left is not None:
@@ -99,6 +90,16 @@ class BST:
 
     def contains(self, value):
         return self._contains(self._root, value)
+
+    def _minval(self, node):
+        while node.left is not None:
+            node = node.left
+        return node
+
+    def minval(self, node):
+        if self._root is not None:
+            return (_minval(self._root)).val
+        return None
 
     def __len__(self):
         return self._size

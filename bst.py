@@ -47,44 +47,44 @@ class BST:
         
         if value < node.val:
             if node.left is not None:
-                return self._delete(node.left, node, value)
+                return self._delete(node.left, node, value, all=all)
             else:
                 return None
         elif value > node.val:
             if node.right is not None:
-                return self._delete(node.right, node, value)
+                return self._delete(node.right, node, value, all=all)
             else:
                 return None
         else: # values are equal
             if node.count > 1 and all is False:
                 node.count -= 1
-                return node
+                return 1
             # Handles leafs and one subtree
             if node.left is None:
                 if parent.left.val == node.val:
                     parent.left = node.right
                 else:
                     parent.right = node.right
-                return node
+                return node.count
             elif node.right is None:
                 if parent.left.val == node.val:
                     parent.left = node.left
                 else:
                     parent.right = node.left
-                return node
+                return node.count
             else: # Has a left and right subtree
                 min_node = self._minval(node.right)
                 temp = node
                 node.val = min_node.val
                 node.count = min_node.count
                 self._delete(node.right, node, min_node.val, all=True)
-                return temp
+                return temp.count
 
-    def delete(self, value):
-        result = self._delete(self._root, None, value)
+    def delete(self, value, all=False):
+        result = self._delete(self._root, None, value, all=all)
         if result:
-            self._size -= 1
-        return None if not result else result.val
+            self._size -= result
+        return None if not result else result
 
     def _contains(self, node, value):
         if node is None: # Reached bottom of tree
@@ -100,5 +100,5 @@ class BST:
     def contains(self, value):
         return self._contains(self._root, value)
 
-    def size(self):
+    def ___len___(self):
         return self._size

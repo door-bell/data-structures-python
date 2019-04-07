@@ -99,5 +99,29 @@ class BSTTestDeletion(unittest.TestCase):
         tree.delete(6, all=True)
         self.assertFalse(tree.contains(6))
 
+class BSTTestSize(unittest.TestCase):
+    def test_bst_size_one(self):
+        tree = genTestTree()
+        self.assertEqual(len(tree), 9)
+        # Delete item with size == 1
+        tree.delete(6)
+        self.assertEqual(len(tree), 8)
+    def test_bst_size_one_of_multiple(self):
+        tree = genTestTree()
+        self.assertEqual(len(tree), 9)
+        # Insert item that is already in the tree
+        tree.insert(10)
+        tree.delete(10)
+        self.assertEqual(len(tree), 9)
+    def test_bst_size_all_of_multiple(self):
+        tree = genTestTree()
+        self.assertEqual(len(tree), 9)
+        # Delete ALL of item with count > 1
+        tree.insert(10)
+        self.assertEqual(len(tree), 10)
+        # Delete item with count = 1
+        tree.delete(10, all=True)
+        self.assertEqual(len(tree), 8)
+
 if __name__ == '__main__':
     unittest.main()

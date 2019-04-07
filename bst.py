@@ -100,5 +100,5 @@ class BST:
     def contains(self, value):
         return self._contains(self._root, value)
 
-    def ___len___(self):
+    def __len__(self):
         return self._size

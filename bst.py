@@ -91,6 +91,19 @@ class BST:
     def contains(self, value):
         return self._contains(self._root, value)
 
+    def _howmany(self, node, value):
+        if node is None:
+            return 0
+        if value < node.val:
+            return self._howmany(node.left, value)
+        elif value > node.val:
+            return self._howmany(node.right, value)
+        else:
+            return node.count
+
+    def howmany(self, value):
+        return self._howmany(self._root, value)
+
     def _minval(self, node):
         while node.left is not None:
             node = node.left

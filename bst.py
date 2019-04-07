@@ -41,18 +41,18 @@ class BST:
             self._insert(self._root, value)
         self._size += 1
 
-    def _delete(self, node, value, all=False):
+    def _delete(self, node, parent, value, all=False):
         if node is None:
             return node
         
         if value < node.val:
             if node.left is not None:
-                return self._delete(node.left, value)
+                return self._delete(node.left, node, value)
             else:
                 return None
         elif value > node.val:
             if node.right is not None:
-                return self._delete(node.right, value)
+                return self._delete(node.right, node, value)
             else:
                 return None
         else: # values are equal
@@ -61,23 +61,27 @@ class BST:
                 return node
             # Handles leafs and one subtree
             if node.left is None:
-                temp = node
-                node = node.right
-                return temp
+                if parent.left.val == node.val:
+                    parent.left = node.right
+                else:
+                    parent.right = node.right
+                return node
             elif node.right is None:
-                temp = node
-                node = node.left
-                return temp
+                if parent.left.val == node.val:
+                    parent.left = node.left
+                else:
+                    parent.right = node.left
+                return node
             else: # Has a left and right subtree
                 min_node = self._minval(node.right)
                 temp = node
                 node.val = min_node.val
                 node.count = min_node.count
-                self._delete(node.right, min_node.val, all=True)
+                self._delete(node.right, node, min_node.val, all=True)
                 return temp
 
     def delete(self, value):
-        result = self._delete(self._root, value)
+        result = self._delete(self._root, None, value)
         if result:
             self._size -= 1
         return None if not result else result.val

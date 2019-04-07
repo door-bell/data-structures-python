@@ -130,5 +130,18 @@ class BSTTestSize(unittest.TestCase):
         tree.delete(1000)
         self.assertEqual(len(tree), 9)
 
+class BSTTestHowMany(unittest.TestCase):
+    def test_bst_howmany_one(self):
+        tree = genTestTree()
+        self.assertEqual(tree.howmany(5), 1)
+    def test_bst_howmany_many(self):
+        tree = genTestTree()
+        tree.insert(5)
+        self.assertEqual(tree.howmany(5), 2)
+    def test_bst_howmany_none(self):
+        tree = genTestTree()
+        self.assertEqual(tree.howmany(1000), 0)
+
+
 if __name__ == '__main__':
     unittest.main()
